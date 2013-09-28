@@ -1,7 +1,8 @@
 <html> 
 <head>
-<%= stylesheet_link_tag "custom" %>
+
 <%= stylesheet_link_tag "bootstrap" %>
+<%= stylesheet_link_tag "custom" %>
 <title> Hackplus </title>
 </head>
 
@@ -18,7 +19,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">Hack Plus</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -50,14 +51,65 @@
 
       <!-- Begin page content -->
       <div class="container">
+      <div class ="main-container">
+
+      
         <div class="page-header">
-          <h1>Sticky footer with fixed navbar</h1>
+          <h2>Your schedule today</h2>
         </div>
-        <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
-        <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
-      </div>
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Saturday, September 28</div>
+          <div class="panel-body">
+            <div id = "taskcontainer">
+            <!--- main task container-->
+            <ul class="list-group">
+              <li class="list-group-item"> 
+              
+              <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapse"> 
+                            <div class="task-name">Package Pickup</div> 
+                            <div class="task-date"> 5:45 PM </div> 
+                        </a>
+                    </div>
+
+                    <div id="collapse" class="accordion-body collapse">  
+                        <div class="accordion-inner">  Pick up a package at the UC and send mail to Stefan and Kathy
+                        </div>
+                    </div>
+                  </div>
+                 </div>
+                 
+               </li>
+              
+            </ul>
+
+<!--------------------- experimenting -------->
+
+
+
+ <!--------------- HELLO ------------------->
+
+
+           </div>
+    
+          </div>
+        </div>
+        
+
+      
+    </div>
     </div>
 
+
+    <div id = "taskadder">
+        
+    </div>
+    </div>
+    
     <div id="footer">
       <div class="container">
         <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>

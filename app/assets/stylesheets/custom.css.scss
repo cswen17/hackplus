@@ -1,0 +1,35 @@
+$taskPadding: 10px;
+
+.main-container{
+    
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+#taskcontainer{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $taskPadding;
+    padding-right: $taskPadding;
+    padding-top: $taskPadding;
+    padding-bottom: $taskPadding;
+    
+    width: 100%;
+    }
+
+
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  text-align: center;
+}
+
+.task-name{
+    font-weight: bold;
+    }
+
+.task-date{
+    font-style: italic;
+    }
