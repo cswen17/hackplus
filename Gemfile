@@ -21,6 +21,7 @@ group :assets do
 end
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
+gem 'bcrypt-ruby', '3.0.1'
 gem 'rspec'
 gem 'cucumber'
 group :development, :test do
