@@ -1,12 +1,16 @@
 <% if @user.errors.any? %>
   <div id="error_explanation">
-    <div class="alert alert-error">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
-    </div>
+    
+    <% @user.errors.add(:password_confirmation) if @user.errors.include?(:password) %>
+    <% @user.errors.delete(:password_digest) %>
+    <div class = "alert alert-error">
+    Sorry! We had some problems:
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
-      <li>* <%= msg %></li>
+
+      <li> <%= msg %></li>
     <% end %>
     </ul>
+    </div>
   </div>
 <% end %>
