@@ -6,12 +6,15 @@ Hackplus::Application.routes.draw do
   # first created -> highest priority.
   root :to => 'demo2#index'
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   
  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
   match '/settings' => 'demo2#settings'  
+  match '/signin' => 'sessions#new'
+  match '/signout' => 'sessions#destroy', via: :delete
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)

@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'rspec'
+gem 'webrat'
 gem 'cucumber'
 group :development, :test do
 	gem 'rspec-rails'
