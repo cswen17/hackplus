@@ -25,6 +25,12 @@ body{
 
 h2{
     font-family: 'Kite One';
+    color: #000000;
+    opacity: 0.5;
+    }
+
+h2{
+    font-family: 'Kite One';
     color: #FFFFFF;
     opacity: 0.5;
     }
@@ -33,6 +39,11 @@ h2.form-signin-heading{
     color: #1D3642;
     }
 
+
+input[type = "number"] {
+    height:100%;
+
+}
 
 .navbar{
     background-color: rgba(0,0,0,0.5);

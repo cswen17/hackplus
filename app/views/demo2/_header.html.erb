@@ -1,4 +1,4 @@
-<% if (not signed_in?) and (request.original_url.split('/')[3] != "signin" and request.original_url.split('/')[3] != "signup") %> <!-- checks if user is logged in -->
+<% if (not signed_in?) and (request.original_url.split('/')[3]  == "/newtask")%> <!-- checks if user is logged in -->
   <script type="text/javascript">
     window.location.href="/signin"; // put your correct path in a string here
   </script>
@@ -37,7 +37,8 @@
                         <ul class="dropdown-menu">
                         
                           <li><a href="settings">Settings</a></li>
-            
+                          <li><a href="newtask">New Task</a></li>
+
                           <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
       
                         </ul>
