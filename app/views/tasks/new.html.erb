@@ -41,11 +41,30 @@
 
 					</div>
 					<% end %>
+					
 					<div class = "form-group">
-					 	<%= f.label :duetime, class: "sr-only" %>
-						<%= f.number_field :duetime, class: "input", placeholder: "Hours till due"%>
+					 	<%= f.label :interest, class: "sr-only" %>
+						<%= f.number_field :interest, placeholder: "How interesting is this task?", html: {max:"10", min: "1"}%>
 
+					</div>		
+					<div class="well">
+					  <div id="datetimepicker1" class="input-append date">
+					  	<%= f.label :duetime, class: "sr-only" %>
+
+					  	<%= f.text_field :duetime, class: "form-control", placeholder: "Due time"%>
+					    <span class="add-on">
+					      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+					      </i>
+					    </span>
+					  </div>
 					</div>
+					<script type="text/javascript">
+					  $(function() {
+					    $('#datetimepicker1').datetimepicker({
+					      language: 'pt-BR'
+					    });
+					  });
+					</script>
 					<div class = "form-group">
 					 	<%= f.label :completed, class: "sr-only" %>
 						<%= f.hidden_field :completed, value: false %>
@@ -55,7 +74,8 @@
 					 	<%= f.label :id, class: "sr-only" %>
 						<%= f.hidden_field :id, value: current_user.id %>
 
-					</div>					
+					</div>			
+							
 					
 					<%= f.submit "Create Task", class: "btn btn-large btn-primary" %>
 				<% end %>

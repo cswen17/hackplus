@@ -5,6 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :description
       t.boolean :completed
       t.datetime :duetime
+      t.integer :interest
       t.belongs_to :user
       t.timestamps
     end
