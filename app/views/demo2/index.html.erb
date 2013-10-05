@@ -27,6 +27,7 @@
     <div id = "taskcontainer">
       <!--- main task container-->
       <ul class="list-group">
+      <% if signed_in? %>
        <% current_user.tasks.each do |task|%>
        <li class="list-group-item">
                
@@ -57,7 +58,7 @@
             </div>
           </div>
         </li>
-        
+        <% end %>
        <% end %>
         <li class="list-group-item">
                
