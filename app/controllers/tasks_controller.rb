@@ -9,6 +9,7 @@ class TasksController < ApplicationController
 		@task = Task.new(params[:task])
 		if @task.save
 			flash[:success] = "Task Saved."
+			
 			redirect_to root_url
 		else
 			render 'new'

@@ -1,3 +1,9 @@
+<% if (not signed_in?) and request.original_url.split('/')[3] != "signin" %> <!-- checks if user is logged in -->
+  <script type="text/javascript">
+    window.location.href="/signin"; // put your correct path in a string here
+  </script>
+<% end %>
+<html>
 <head>
 
 <%= stylesheet_link_tag "bootstrap" %>
