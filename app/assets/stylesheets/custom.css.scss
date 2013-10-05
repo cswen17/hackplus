@@ -1,9 +1,46 @@
 $taskPadding: 10px;
 
+body{
+    background: url(/images/bcg2.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    font-family:'Sintony';
+    }
+
+h2{
+    font-family: 'Kite One';
+    color: #FFFFFF;
+    opacity: 0.5;
+    }
+
+.navbar{
+    background-color: rgba(0,0,0,0.5);
+    }
+
+.navbar-brand a:hover{
+    background-color: rgba(0,0,0,1);
+    }
 .main-container{
     
     margin-left: auto;
     margin-right: auto;
+    }
+
+.list-group-item{
+    background-color: rgba(0,0,0,0.5) !important;
+    }
+
+.panel-heading{
+    background-color: rgba(0,0,0,0.5) !important;
+    color: #9ABFDE !important;
+    font-size: 18px !important;
+    }
+    
+.panel{
+    background-color: rgba(0,0,0,0.5);
     }
 
 #taskcontainer{
