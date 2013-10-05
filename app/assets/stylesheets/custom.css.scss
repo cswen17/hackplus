@@ -2,25 +2,14 @@ $taskPadding: 10px;
 $colorOrange: #E89C0C;
 $colorLightGrey: #B7B8B6;
 
-
-@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
-
-      -webkit-box-shadow:$top $left $blur $color #{$inset};
-      -moz-box-shadow:$top $left $blur $color #{$inset};
-      box-shadow:$top $left $blur $color #{$inset};
+@mixin round-borders-top{
+    border-top-left-radius:25px;
+    border-top-right-radius:25px;
     }
-    
-    
-@mixin shadow-curved-vertical {
-	&:before {
-		top:10px; bottom:10px;
-		left:0; right:0%;
 
-		@include box-shadow(0, 0, 13px, rgba(black, .5), 4px);
-		-moz-border-radius:10px / 100px;
-		border-radius:10px / 100px;
-	}
-}
+@mixin round-borders{
+    border-radius:25px;
+    }
 
 
 body{
@@ -76,6 +65,7 @@ a.navbar-brand{
     background-color: rgba(0,0,0,0.5);
     margin-top: 6px !important;
     color: $colorOrange !important;
+    @include round-borders;
     font-family: 'Open Sans';
     padding-bottom: 10px;
     padding-left: 10px;
@@ -100,12 +90,18 @@ a.navbar-brand{
     font-size: 18px !important;
     border: none !important;
     font-family: "Open Sans";
-    }
-    
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    text-align: center;
+    @include round-borders-top;
+}
+
 .panel{
     background-color: rgba(0,0,0,0.7);
     border-color: rgba(255,255,255,0.2);
-    @include shadow-curved-vertical;
+    @include round-borders;
     }
 
 #taskcontainer{
@@ -145,12 +141,4 @@ a.navbar-brand{
 .accordion-inner{
     border: none;
     }
-
-.panel-heading {
-  padding: 10px 15px;
-  border-bottom: 1px solid transparent;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  text-align: center;
-}
 
