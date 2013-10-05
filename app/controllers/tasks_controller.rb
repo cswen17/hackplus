@@ -7,10 +7,12 @@ class TasksController < ApplicationController
 		@task = Task.find(params[:id])
 	end
 	def create
+
 		@task = Task.new(params[:task])
 		if @task.save
+			params[:task][:duetime] = DateTime.strptime(params[:task][:duetime], 
+												"%m/%d/%Y %H:%M:%S %p")
 			#make time attribute follow this pattern instead
-			@task.update_attributes(:duetime => DateTime.strptime(params[:task][:duetime], "%m/%d/%Y %H:%M:%S %p"))
 			@user = User.find(params[:task][:id])
 
 			@user.tasks.create(params[:task])
