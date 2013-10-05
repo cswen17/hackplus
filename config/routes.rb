@@ -5,8 +5,11 @@ Hackplus::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'demo2#index'
-  resources :users
+  resources :users do
+    resources :tasks
+  end
   resources :tasks
+  
   resources :sessions, only: [:new, :create, :destroy]
   
  
@@ -15,7 +18,10 @@ Hackplus::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
   match '/settings' => 'demo2#settings'  
   match '/signin' => 'sessions#new'
-  match '/newtask' => 'tasks#new'
+  match 'users/:id/newtask' => 'tasks#new'
+  match 'newtask' => 'tasks#new'
+
+  match '/tasks' => 'tasks#index'
 
   match '/signout' => 'sessions#destroy', via: :delete
   # Sample of named route:
