@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(:version => 20131005001931) do
     t.string   "name"
     t.string   "description"
     t.boolean  "completed"
-    t.string   "duetime"
+    t.datetime "duetime"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

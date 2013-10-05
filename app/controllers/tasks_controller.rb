@@ -4,6 +4,7 @@ class TasksController < ApplicationController
 	end
 	def show
 		@task = Task.find(params[:id])
+	end
 	def create
 		@task = Task.new(params[:task])
 		if @task.save
