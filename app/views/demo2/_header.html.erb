@@ -44,7 +44,37 @@
                         </ul>
                       </li>
                     <% else %>
-                      <li><%= link_to "Sign in", signin_path %></li>
+                      <li class = "dropdown">
+                      <a href ='#' class = "dropdown-toggle" data-toggle="dropdown"> Sign In </a>
+                      <ul class = "dropdown-menu wide">
+                      <li>
+     
+                          <%= form_for(:session, url: sessions_path, html: { class: "form-dropdown"}) do |f|%>
+
+                              <%= f.label :email, class: "sr-only" %>
+
+                              <%= f.text_field :email, class:"input-block-level", placeholder:"Email" %>
+
+                              <%= f.label :password, class: "sr-only" %>
+                              <%= f.password_field :password, class:"input-block-level", placeholder:"Password" %>
+
+                            <%= f.submit "Sign in", class: "btn btn-primary" %>
+                            <input type = "button" class= "btn btn-secondary" style = "float: right" onclick= "window.location='/signup'" value = "Sign Up"/>
+
+                           <% end %>
+
+
+
+
+
+                     
+                      </li>
+                      <li>
+
+                      </li>
+                      </ul>
+                                            </li>
+
                     <% end %>
                   </ul>
                 </div><!--/.nav-collapse -->

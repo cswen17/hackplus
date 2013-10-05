@@ -20,7 +20,9 @@
 
   <div class="panel panel-default">
   <div class="panel-heading">
-    <%= Time.now.inspect %>
+  <% Time::DATE_FORMATS[:short_ordinal]  = ->(time) { time.strftime("%B #{time.day.ordinalize}") }%>
+
+    <%= Time.now.to_formatted_s(:short_ordinal) %>
   </div>
   <div class="panel-body">
     <div id = "taskcontainer">
@@ -44,7 +46,7 @@
                   </div>
                   
                   <div class="task-date">
-                    <%= task.duetime %>
+                    <%= task.duetime.strftime("%l:%M %P") %>
                   </div>
                   
                 </a>
@@ -62,38 +64,7 @@
         <% end %>
           </div>
        <% end %>
-        <li class="list-group-item">
-               
-          
-          <div class="accordion" id="accordion2">
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapse">
-                  
-                  <div class="task-name">
-                    Package Pickup
-                  </div>
-                  
-                  <div class="task-date">
-                    5:45 PM 
-                  </div>
-                  
-                </a>
-              </div>
-              
-              <div id="collapse" class="accordion-body collapse">
-                
-                <div class="accordion-inner">
-                  Pick up a package at the UC and send mail to Stefan and Kathy
-                </div>
-
-                
-                
-                
-              </div>
-            </div>
-          </div>
-        </li>
+        
         
       </ul>
     </div>
