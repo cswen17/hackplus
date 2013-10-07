@@ -16,7 +16,7 @@ Hackplus::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-  match '/settings' => 'demo2#settings'  
+  match '/users/:id/edit' => 'users#edit'
   match '/signin' => 'sessions#new'
   match 'users/:id/newtask' => 'tasks#new'
   match 'newtask' => 'tasks#new'

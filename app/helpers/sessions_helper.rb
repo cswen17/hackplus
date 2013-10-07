@@ -22,4 +22,7 @@ module SessionsHelper
 		#||= is an operator that assigns @current_user only if it is undefined
 	end
 
+	def current_user?(user)
+		user == current_user
+	end
 end
