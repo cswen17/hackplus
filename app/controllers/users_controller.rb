@@ -34,6 +34,9 @@ class UsersController < ApplicationController
     end
   end
 
+
+  
+
   private
 
     def signed_in_user
@@ -44,4 +47,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to root_url unless current_user?(@user)
     end
+
+  helper_method :sortTasksbyPriority
 end

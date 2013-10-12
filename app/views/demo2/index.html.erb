@@ -33,6 +33,11 @@
                
           
           <div class="accordion" id="accordion2">
+            
+            <!--
+             <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
+             </span> -->
+       <% current_user.tasks.sort_by! {|task| -1 *task.interest}  %>
        <% current_user.tasks.each do |task|%>
        <li class="list-group-item">
                 <div class="accordion-group">
@@ -57,6 +62,8 @@
                 <div class="accordion-inner">
                   <%= task.description %>
                   <span class="delete_task"><%= link_to 'delete', task, method: :delete%></span>
+
+
                 </div>
               </div>
                     </div>
