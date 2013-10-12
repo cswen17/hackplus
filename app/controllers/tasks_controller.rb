@@ -23,4 +23,9 @@ class TasksController < ApplicationController
 			render 'new'
 		end
 	end
+	def destroy
+		@task = Task.find(params[:id])
+		@task.delete
+		redirect_to root_url
+	end
 end
