@@ -19,11 +19,19 @@
 
 
   <div class="panel panel-default">
+
+<div class = "accordionHead" id = "accordion3">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionHead" data-target= ".panel-body">
+  
   <div class="panel-heading">
   <% Time::DATE_FORMATS[:short_ordinal]  = ->(time) { time.strftime("%B #{time.day.ordinalize}") }%>
 
     <%= Time.now.to_formatted_s(:short_ordinal) %>
   </div>
+
+</a>
+
+  
   <div class="panel-body">
     <div id = "taskcontainer">
       <!--- main task container-->
@@ -35,10 +43,16 @@
           <div class="accordion" id="accordion2">
        <% current_user.tasks.each do |task|%>
        <li class="list-group-item">
+
+
+               <div class="task-interest">
+               <%= task.interest %>
+               </div>
+
+
                 <div class="accordion-group">
 
               <div class="accordion-heading">
-
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target= "#<%= task.id %>">
                   
                   <div class="task-name">
@@ -48,14 +62,18 @@
                   <div class="task-date">
                     <%= task.duetime.strftime("%l:%M %P") %>
                   </div>
-                  
-                </a>
+
+               
               </div>
               
               <div id= "<%= task.id %>" class="accordion-body collapse">
+
+                </a>
+        
                 
                 <div class="accordion-inner">
                   <%= task.description %>
+                  <span class="delete_task"><%= link_to 'delete', task, method: :delete%></span>
                 </div>
               </div>
                     </div>
@@ -74,6 +92,7 @@
 </div>
 </div>
 
+</div>
 
 
 </body>

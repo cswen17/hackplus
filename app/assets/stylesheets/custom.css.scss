@@ -1,6 +1,7 @@
 $taskPadding: 10px;
 $colorOrange: #E89C0C;
 $colorLightGrey: #B7B8B6;
+$colorGreen:#5DE100;
 
 @mixin round-borders-top{
     border-top-left-radius:25px;
@@ -102,6 +103,10 @@ ul.dropdown-menu.wide{
 
     }
 
+.panel .panel-default{
+    background-color: none;
+    }
+
 .list-group-item{
     background-color: rgba(0,0,0,0.5) !important;
     border-color: rgba(255,255,255,0.4);
@@ -121,6 +126,8 @@ ul.dropdown-menu.wide{
     border-bottom: 1px solid transparent;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
     text-align: center;
     @include round-borders-top;
 }
@@ -129,6 +136,8 @@ ul.dropdown-menu.wide{
     background-color: rgba(0,0,0,0.7);
     border-color: rgba(255,255,255,0.2);
     @include round-borders;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
     }
 
 #taskcontainer{
@@ -156,9 +165,15 @@ ul.dropdown-menu.wide{
     }
 
 
-.task-date{
+.task-date, .task-date a{
     font-style: italic;
     color: $colorOrange;
+    }
+
+.task-interest{
+    float: right;
+    color: $colorGreen;
+    padding: 10px;
     }
 
     
