@@ -22,8 +22,8 @@ Hackplus::Application.routes.draw do
   match 'users/:id/newtask' => 'tasks#new'
   match 'newtask' => 'tasks#new'
   match '/complete.:id' => 'tasks#complete'
-
-  match '/tasks/:id/' => 'tasks#index'
+  
+  match '/tasks/:id/' => 'tasks#index'  
 
   match '/signout' => 'sessions#destroy', via: :delete
   # Sample of named route:
