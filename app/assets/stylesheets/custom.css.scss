@@ -1,4 +1,4 @@
-$taskPadding: 10px;
+$taskPadding: 5px;
 $colorOrange: #E89C0C;
 $colorLightGrey: #B7B8B6;
 $colorGreen:#5DE100;
@@ -56,11 +56,16 @@ a.navbar-brand{
     font-family: 'Dosis';
     }
 .main-container{
-    
+    background-color: rgba(0,0,0,0.8);
+    padding: 50px;
     margin-left: auto;
     margin-right: auto;
+    bottom: 0px;
     }
-
+.page-header{
+    margin: none;
+    border-bottom: none;
+    }
 .btn{
   color: #ffffff;
   background-image: linear-gradient(rgb(255, 93, 19), rgb(171, 74, 15));
@@ -198,5 +203,6 @@ a:hover.accordion-toggle{
     }
 .accordion-inner{
     border: none;
+    margin-top: 25px;
     }
 
