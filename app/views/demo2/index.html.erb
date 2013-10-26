@@ -1,9 +1,25 @@
 <html> 
 <%= render "header" %>
-<script>
-$('#panel-body2').collapse("hide");
-</script>
-<body style = "margin-top: 50px">
+<% 
+#write this up here so as to be more efficient
+todo = [];
+completed = [];
+
+current_user.tasks.each do |task|
+  unless task.completed
+    todo.append(task)
+  else
+    completed.append(task)
+  end
+
+  todo.sort_by! {|task| calcTimeEfficiency(task, calcPriority(task))}
+  todo.reverse!
+  completed.sort_by! {|task| task.duetime}
+  completed.reverse!
+end 
+%>
+
+<body style = "margin-top: 60px">
 
 
 
@@ -12,28 +28,28 @@ $('#panel-body2').collapse("hide");
     <div id = "page-block"> <!-- page container-->
       <div class ="main-container">
         <div class="page-header">
-          <h2>Your schedule today</h2>
+          <h2>My Tasks</h2>
         </div>
         <div class="panel panel-default">
         <div class = "accordionHead" id = "accordion3">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionHead" data-target= ".panel-body">
             <div class="panel-heading">
-            My Tasks
+            To Do
             </div>
             </a>
         <div class="panel-body collapse in">
+
           <div id = "taskcontainer">
                 <!--- main task container-->
                 <ul class="list-group">
+
+
                 <% if signed_in? %>
                     <div class="accordion" id="accordion2">
                       <!--
                        <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
                        </span> -->
-                 <% current_user.tasks.sort_by! {|task| -1*calcTimeEfficiency(task, calcPriority(task)) }  %>
-
-                 <% current_user.tasks.each do |task|%>
-                 <% if !task.completed %>
+                 <% todo.each do |task|%>
                  <li class="list-group-item">
 
                          
@@ -57,7 +73,7 @@ $('#panel-body2').collapse("hide");
                                       </div>    
                             
                                       <div class="task-date">
-                                          <%= task.duetime.strftime("%l:%M %P") %>
+                                          <%= task.duetime.strftime("%D %l:%M %P") %>
                                       </div>
               
                                   </a>
@@ -82,12 +98,11 @@ $('#panel-body2').collapse("hide");
                           </div>
                           </div>
                   </li>
-
-                  <% end %>
                  <% end %>
                     </div>
                   <% end %>                 
                 </ul>
+
           </div>
 
 
@@ -99,8 +114,8 @@ $('#panel-body2').collapse("hide");
 <div class="panel panel-default">
 <div class = "accordionHead" id = "accordion3">
   <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionHead" data-target= ".panel-body2">
-    <div class="panel-heading">
-    Completed Tasks
+    <div class="panel-heading ">
+    Completed
     </div>
   </a>
 
@@ -108,14 +123,13 @@ $('#panel-body2').collapse("hide");
     <div id = "completedtaskcontainer">
       <!--- main task container-->
       <ul class="list-group">
-      <% if signed_in? %>   
+       
         <div class="accordion2">
             <!--
              <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
              </span> -->
-            <% current_user.tasks.sort_by! {|task| -1*calcTimeEfficiency(task, calcPriority(task)) }  %>
-            <% current_user.tasks.each do |task|%>
-            <% if task.completed %>
+
+            <% completed.each do |task|%>
               <li class="list-group-item">
                 <div class="task-interest">
                <% timeEff = calcTimeEfficiency(task, calcPriority(task)) %>
@@ -133,7 +147,7 @@ $('#panel-body2').collapse("hide");
                                       </div>    
                             
                                       <div class="task-date">
-                                          <%= task.duetime.strftime("%l:%M %P") %>
+                                          <%= task.duetime.strftime("%D %l:%M %P") %>
                                       </div>
               
                                   </a>
@@ -157,10 +171,10 @@ $('#panel-body2').collapse("hide");
               
         </li>
 
-        <% end %>
-        <% end %>
+       
+               <% end %>
+
         </div>
-       <% end %>
 
        
         
