@@ -33,7 +33,7 @@ function ($) { "use strict";
   }
 
   Collapse.DEFAULTS = {
-    toggle: true
+    toggle: false
   }
 
   Collapse.prototype.dimension = function () {

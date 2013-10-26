@@ -4,15 +4,25 @@ $colorLightGrey: #B7B8B6;
 $colorGreen:#5DE100;
 
 @mixin round-borders-top{
-    border-top-left-radius:25px;
-    border-top-right-radius:25px;
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
     }
 
 @mixin round-borders{
-    border-radius:25px;
+    border-radius:15px;
     }
 
+.checkmark{
+    align: center;
+    font-size: 24px;
+    float: right;
+    }
 
+a:hover.checkmark{
+    color: white;
+    text-decoration: none;
+    
+    }
 
 body{
     background: url(/images/bcg2.jpg) no-repeat center center fixed; 
@@ -55,17 +65,20 @@ a.navbar-brand{
     font-size: 25px !important;
     font-family: 'Dosis';
     }
-.main-container{
+
+#page-block{
     background-color: rgba(0,0,0,0.8);
     padding: 50px;
     margin-left: auto;
     margin-right: auto;
     bottom: 0px;
     }
+
 .page-header{
     margin: none;
     border-bottom: none;
     }
+
 .btn{
   color: #ffffff;
   background-image: linear-gradient(rgb(255, 93, 19), rgb(171, 74, 15));
@@ -85,8 +98,6 @@ li.dropdown {
 
 }
 
-
-
 .form-dropdown{
     float:left;
     display: block;
@@ -96,7 +107,6 @@ li.dropdown {
 ul.dropdown-menu.wide{
    width: 200%; 
 }
-
 
 
 .dropdown-menu{
@@ -115,6 +125,7 @@ ul.dropdown-menu.wide{
 
     }
 
+
 .panel .panel-default{
     background-color: none;
     }
@@ -127,10 +138,11 @@ ul.dropdown-menu.wide{
     }
 
 .panel-heading{
-    background-color: rgba(0,0, 0,0.5) !important;
+    background-color: rgba(0,0, 0,0.9) !important;
     color: $colorOrange !important;
     font-size: 18px !important;
-    border: none !important;
+    border-bottom: 2px;
+    border-color: $colorOrange;
     font-family: "Kite One";
     padding: 10px 15px;
     border-top-right-radius: 3px;
@@ -138,7 +150,7 @@ ul.dropdown-menu.wide{
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
     text-align: center;
-    @include round-borders-top;
+    @include round-borders;
 }
 
 .panel.panel-default{
