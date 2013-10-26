@@ -24,7 +24,6 @@ gem 'twitter-bootstrap-rails'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'rspec'
 gem 'webrat'
-gem 'cucumber'
 group :development, :test do
 	gem 'rspec-rails'
 end
@@ -32,7 +31,7 @@ end
 group :test do
 	gem 'cucumber-rails', :require => false
 	gem 'capybara', '2.1.0'
-	gem 'database_cleaner'
+	gem 'database_cleaner', github: 'bmabey/database_cleaner'
 	gem 'factory_girl_rails','4.1.0'
 end
 
