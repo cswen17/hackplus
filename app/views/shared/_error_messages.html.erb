@@ -1,13 +1,14 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
     
-    <% @user.errors.add(:password_confirmation) if @user.errors.include?(:password) %>
-    <% @user.errors.delete(:password_digest) %>
+    <% if object == @user %>
+      <% @user.errors.add(:password_confirmation) if @user.errors.include?(:password) %>
+      <% @user.errors.delete(:password_digest) %>
+    <% end %>
     <div class = "alert alert-error">
     Sorry! We had some problems:
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-
+    <% object.errors.full_messages.each do |msg| %>
       <li> <%= msg %></li>
     <% end %>
     </ul>

@@ -13,6 +13,7 @@
 			<div class="span4 offset4">
 				<%= form_for @task, html: {class: "form-signin"} do |f| %>
 					 <h2 class="form-signin-heading">New Task</h2>
+					 <%= render 'shared/error_messages', object: @task %>
 
 					<% if @task.errors.include?(:name) %>
 					<div class="form-group has-error">
