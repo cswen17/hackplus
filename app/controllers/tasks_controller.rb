@@ -24,10 +24,6 @@ class TasksController < ApplicationController
 			render 'new'
 		end
 	end
-
-
-
-
 	
 
 	def destroy
