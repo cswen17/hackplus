@@ -26,16 +26,7 @@ class TasksController < ApplicationController
 	end
 
 
-	def calcPriority(currenttime)
-		@task = Task.find(params[:id])
-		duetime = @task.duetime
-		diff = ((duetime - currenttime)/1.mins).round
-		if(diff < .1)
-			diff = .1
-		end
-		#returns a float between 0 and 100
-		return 10.0/diff
-	end 
+
 
 	
 

@@ -1,6 +1,8 @@
 <html> 
 <%= render "header" %>
-
+<script>
+$('#panel-body2').collapse("hide");
+</script>
 <body style = "margin-top: 50px">
 
 
@@ -24,9 +26,8 @@
 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionHead" data-target= ".panel-body">
   
   <div class="panel-heading">
-  <% Time::DATE_FORMATS[:short_ordinal]  = ->(time) { time.strftime("%B #{time.day.ordinalize}") }%>
+  My Tasks
 
-    <%= Time.now.to_formatted_s(:short_ordinal) %>
   </div>
 
 </a>
@@ -45,15 +46,18 @@
             <!--
              <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
              </span> -->
-       <% current_user.tasks.sort_by! {|task| -1 *task.interest}  %>
+        
+
+       <% current_user.tasks.sort_by! {|task| -1*calcTimeEfficiency(task, calcPriority(task)) }  %>
+
        <% current_user.tasks.each do |task|%>
        <% if !task.completed %>
        <li class="list-group-item">
 
 
                <div class="task-interest">
-               <%= task.interest %>
-               <%= task.completed %>
+               <% timeEff = calcTimeEfficiency(task, calcPriority(task)) %>
+               <%= timeEff %>
                </div>
 
               <div class="checkoff-button">
@@ -85,6 +89,113 @@
                 
                 <div class="accordion-inner">
                   <%= task.description %>
+                  <br />
+                  Priority of task: <%= calcPriority(task).round(2) %>
+
+                  <br/>
+                  How interested I am: <%= task.interest %>
+                  <br/>
+                  Length: <%= task.length %>
+                  <span class="delete_task"><%= link_to 'delete', task, method: :delete%></span>
+                </div>
+              </div>
+                    </div>
+        </li>
+
+        <% end %>
+        <% end %>
+          </div>
+       <% end %>
+
+       
+        
+        
+      </ul>
+    </div>
+
+
+</div>  
+</div>
+</div>
+<div id = "page-container"> <!-- page container-->
+      
+ 
+
+
+  <div class="panel panel-default">
+
+<div class = "accordionHead" id = "accordion3">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionHead" data-target= ".panel-body2">
+  
+  <div class="panel-heading">
+  Completed Tasks
+
+  </div>
+
+</a>
+
+  
+  <div class="panel-body2 collapse">
+    <div id = "completedtaskcontainer">
+      <!--- main task container-->
+      <ul class="list-group">
+      <% if signed_in? %>
+      
+               
+          
+          <div class="accordion2">
+            
+            <!--
+             <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
+             </span> -->
+        
+
+       <% current_user.tasks.sort_by! {|task| -1*calcTimeEfficiency(task, calcPriority(task)) }  %>
+
+       <% current_user.tasks.each do |task|%>
+       <% if task.completed %>
+       <li class="list-group-item">
+
+
+               <div class="task-interest">
+               <% timeEff = calcTimeEfficiency(task, calcPriority(task)) %>
+               <%= timeEff %>
+               </div>
+
+           
+
+
+
+                <div class="accordion-group">
+
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target= "#<%= task.id %>">
+                  
+                  <div class="task-name">
+                    <%= task.name %>
+                  </div>
+                  
+                  <div class="task-date">
+                    <%= task.duetime.strftime("%l:%M %P") %>
+                  </div>
+
+               
+              </div>
+              
+              <div id= "<%= task.id %>" class="accordion-body collapse">
+
+                </a>
+        
+                
+                <div class="accordion-inner">
+                  <%= task.description %>
+                  <br />
+                  Priority of task: <%= calcPriority(task).round(2) %>
+
+                  <br/>
+                  How interested I am: <%= task.interest %>
+                  <br/>
+                  Length: <%= task.length %>
                   <span class="delete_task"><%= link_to 'delete', task, method: :delete%></span>
                 </div>
               </div>
@@ -107,7 +218,6 @@
 </div>
 </div>
 
-</div>
 
 
 </body>
