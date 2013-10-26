@@ -8,7 +8,9 @@ Hackplus::Application.routes.draw do
   resources :users do
     resources :tasks
   end
-  resources :tasks
+  resources :tasks do
+    put 'complete', on: :member
+  end
   
   resources :sessions, only: [:new, :create, :destroy]
   
@@ -21,9 +23,10 @@ Hackplus::Application.routes.draw do
   match '/signin' => 'sessions#new'
   match 'users/:id/newtask' => 'tasks#new'
   match 'newtask' => 'tasks#new'
-  match '/complete.:id' => 'tasks#complete'
-  
-  match '/tasks/:id/' => 'tasks#index'  
+
+  match 'tasks/:id/complete' => 'tasks#complete'
+
+  match '/tasks/:id/' => 'tasks#index'
 
   match '/signout' => 'sessions#destroy', via: :delete
   # Sample of named route:
