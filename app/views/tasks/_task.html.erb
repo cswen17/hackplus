@@ -1,0 +1,44 @@
+<li class="list-group-item" id="task_<%=task.id%>">
+              <div class="task-interest">
+              <% timeEff = calcTimeEfficiency(task, calcPriority(task)) %>
+              <%= timeEff %>
+              </div>
+
+              <% if !task.completed %>
+                <%= link_to "✔", complete_task_path(task), remote: true, class: "checkmark" %>
+              <% end %>
+
+              <div class="accordion-group">
+              <div class="accordion-heading">
+                          <div class = "row">
+                              <div class ="col-md-4">
+                                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target= "#<%= task.id %>">
+                            
+                                      <div class="task-name">
+                                          <%= task.name %>
+                                      </div>    
+                            
+                                      <div class="task-date">
+                                          <%= task.duetime.strftime("%D %l:%M %P") %>
+                                      </div>
+              
+                                  </a>
+
+                                   <div id= "<%= task.id %>" class="accordion-body collapse">
+                                          <div class="accordion-inner">
+                                              <%= task.description %>
+                                            </div>
+                                   </div>
+                              </div>
+                              <div class="col-md-4">
+                                  Priority of task: <%= calcPriority(task).round(2) %> 
+                                  How interested I am: <%= task.interest %> 
+                                  Length: <%= task.length %> 
+                                  <span class="delete_task"><%= link_to 'delete', task, remote: true, method: :delete%></span>
+                              </div>
+                          
+                          </div>
+            </div>
+            </div>
+              
+        </li>

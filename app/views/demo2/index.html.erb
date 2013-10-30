@@ -45,62 +45,8 @@ end
 
 
                 <% if signed_in? %>
-                    <div class="accordion" id="accordion2">
-                      <!--
-                       <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
-                       </span> -->
-                 <% todo.each do |task|%>
-                 <li class="list-group-item" id="task_<%= task.id%>">
-
-                         
-                         <div class="task-interest">
-                         <% timeEff = calcTimeEfficiency(task, calcPriority(task)) %>
-                         <%= timeEff %>
-                         </div>
-
-                          <%= link_to "✔", complete_task_path(task), class: "checkmark" %>
-           
-                          <div class="accordion-group">
-                          
-                          
-                          <div class="accordion-heading">
-                          <div class = "row">
-                              <div class ="col-md-4">
-                                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target= "#<%= task.id %>">
-                            
-                                      <div class="task-name">
-                                          <%= task.name %>
-                                      </div>    
-                            
-                                      <div class="task-date">
-                                          <%= task.duetime.strftime("%D %l:%M %P") %>
-                                      </div>
-              
-                                  </a>
-
-
-                                   <div id= "<%= task.id %>" class="accordion-body collapse">
-                                          <div class="accordion-inner">
-                                              <%= task.description %>
-                                          </div>
-                                   </div>
-                                   
-                              </div>
-                              <div class="col-md-4">
-                                  Priority of task: <%= calcPriority(task).round(2) %> 
-                                  How interested I am: <%= task.interest %> 
-                                  Length: <%= task.length %> 
-                                  <span class="delete_task"><%= link_to 'delete', task, method: :delete, remote: true %></span>
-            
-                              </div>
-                          
-                          </div>
-                          </div>
-                          </div>
-                  </li>
-                 <% end %>
-                    </div>
-                  <% end %>                 
+                    <div id="todo_tasks"><%= render partial: "tasks/task", collection: todo %></div>
+                <% end %>                 
                 </ul>
 
           </div>
@@ -122,62 +68,16 @@ end
   <div class="panel-body2 collapse">
     <div id = "completedtaskcontainer">
       <!--- main task container-->
-      <ul class="list-group">
+      <ul class="list-group" id="completed_list">
        
         <div class="accordion2">
             <!--
              <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
              </span> -->
 
-            <% completed.each do |task|%>
-              <li class="list-group-item">
-                <div class="task-interest">
-               <% timeEff = calcTimeEfficiency(task, calcPriority(task)) %>
-               <%= timeEff %>
-               </div>
-
-              <div class="accordion-group">
-              <div class="accordion-heading">
-                          <div class = "row">
-                              <div class ="col-md-4">
-                                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target= "#<%= task.id %>">
-                            
-                                      <div class="task-name">
-                                          <%= task.name %>
-                                      </div>    
-                            
-                                      <div class="task-date">
-                                          <%= task.duetime.strftime("%D %l:%M %P") %>
-                                      </div>
-              
-                                  </a>
-
-                                   <div id= "<%= task.id %>" class="accordion-body collapse">
-                                          <div class="accordion-inner">
-                                              <%= task.description %>
-                                          </div>
-                                   </div>
-                              </div>
-                              <div class="col-md-4">
-                                  Priority of task: <%= calcPriority(task).round(2) %> 
-                                  How interested I am: <%= task.interest %> 
-                                  Length: <%= task.length %> 
-                                  <span class="delete_task"><%= link_to 'delete', task, method: :delete%></span>
-                              </div>
-                          
-                          </div>
-            </div>
-            </div>
-              
-        </li>
-
-       
-               <% end %>
+              <div id="completed_tasks"><%= render partial: "tasks/task", collection: completed %></div>
 
         </div>
-
-       
-        
         
       </ul>
     </div>
