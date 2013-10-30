@@ -50,7 +50,7 @@ end
                        <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
                        </span> -->
                  <% todo.each do |task|%>
-                 <li class="list-group-item">
+                 <li class="list-group-item" id="task_<%= task.id%>">
 
                          
                          <div class="task-interest">
@@ -90,7 +90,7 @@ end
                                   Priority of task: <%= calcPriority(task).round(2) %> 
                                   How interested I am: <%= task.interest %> 
                                   Length: <%= task.length %> 
-                                  <span class="delete_task"><%= link_to 'delete', task, method: :delete%></span>
+                                  <span class="delete_task"><%= link_to 'delete', task, method: :delete, remote: true %></span>
             
                               </div>
                           
