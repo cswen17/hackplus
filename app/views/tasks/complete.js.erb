@@ -1,2 +1,4 @@
-$('#task_<%= @task.id %>').fadeOut();
-$('#completed_list').append("<%=escape_javascript(render(@task))%>")
+$('#task_<%= @task.id %>').fadeOut().delay(500).queue(function(){
+   $(this).remove()
+})
+$('#completed_list').append("<%=escape_javascript(render(@task))%>");

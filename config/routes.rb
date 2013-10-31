@@ -10,6 +10,7 @@ Hackplus::Application.routes.draw do
   end
   resources :tasks do
     put 'complete', on: :member
+    put 'uncomplete', on: :member
   end
   
   resources :sessions, only: [:new, :create, :destroy]
@@ -25,6 +26,7 @@ Hackplus::Application.routes.draw do
   match 'newtask' => 'tasks#new'
 
   match 'tasks/:id/complete' => 'tasks#complete'
+  match 'tasks/:id/uncomplete' => 'tasks#uncomplete'
 
   match '/tasks/:id/' => 'tasks#index'
 

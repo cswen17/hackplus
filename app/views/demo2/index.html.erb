@@ -41,7 +41,7 @@ end
 
           <div id = "taskcontainer">
                 <!--- main task container-->
-                <ul class="list-group">
+                <ul class="list-group" id="todo_list">
 
 
                 <% if signed_in? %>
@@ -70,15 +70,9 @@ end
       <!--- main task container-->
       <ul class="list-group" id="completed_list">
        
-        <div class="accordion2">
-            <!--
-             <span class="delete_task"><%= link_to 'Sort', current_user, method: :put %>
-             </span> -->
-
-              <div id="completed_tasks"><%= render partial: "tasks/task", collection: completed %></div>
-
-        </div>
-        
+              <% if signed_in? %>
+                <div id="completed_tasks"><%= render partial: "tasks/task", collection: completed %></div>
+              <% end %>
       </ul>
     </div>
 

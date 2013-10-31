@@ -43,4 +43,13 @@ class TasksController < ApplicationController
 			format.js
 		end
 	end
+
+	def uncomplete
+		@task = Task.find(params[:id])
+		@task.update_attribute(:completed, false)
+		respond_to do |format|
+			format.html { redirect_to root_url }
+			format.js
+		end
+	end
 end

@@ -5,7 +5,9 @@
               </div>
 
               <% if !task.completed %>
-                <%= link_to "✔", complete_task_path(task), remote: true, class: "checkmark" %>
+                <%= link_to "☐", complete_task_path(task), remote: true, class: "checkmark" %>
+              <% else %>
+                <%= link_to "☑", uncomplete_task_path(task), remote: true, class: "checkmark" %>
               <% end %>
 
               <div class="accordion-group">

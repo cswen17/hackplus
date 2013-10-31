@@ -1,3 +1,4 @@
 $('#task_<%= @task.id %>').fadeOut().fadeOut().delay(500).queue(function(){
    $(this).remove()
 })
+$('#todo_list').append("<%=escape_javascript(render(@task))%>");
