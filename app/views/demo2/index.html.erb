@@ -1,6 +1,7 @@
 <html> 
 <%= render "header" %>
 <% 
+if signed_in?
 #write this up here so as to be more efficient
 todo = [];
 completed = [];
@@ -17,6 +18,8 @@ current_user.tasks.each do |task|
   completed.sort_by! {|task| task.duetime}
   completed.reverse!
 end 
+
+end
 %>
 
 <body style = "margin-top: 60px">
@@ -29,6 +32,87 @@ end
       <div class ="main-container">
         <div class="page-header">
           <h2>My Tasks</h2>
+        </div>
+        <div class="panel panel-default">
+        <div class = "accordionHead" id = "accordion3">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionHead" data-target= ".new_task">
+            <div class="panel-heading">
+            New Task
+            </div>
+            </a>
+        <div class="new_task collapse">
+
+          <div id = "taskcontainer">
+                <!--- main task container-->
+                <ul class="list-group" id="todo_list">
+
+
+          <% if signed_in? %>
+          <%= form_for :task, remote: true, html: {class: "form-signin"} do |f| %>
+           <h2 class="form-signin-heading">New Task</h2>
+
+          <div class="form-group">
+            <%= f.text_field :name, class:"form-control",  placeholder:"Name" %>
+          </div>
+
+
+          <div class="form-group">
+            <%= f.text_area :description, class:"form-control", size:"10x5",  placeholder:"Description" %>
+          </div>
+          
+          
+          <div class = "form-group">
+            <%= f.label :interest, class: "sr-only" %>
+            <%= f.number_field :interest, placeholder: "How interesting is this task?", html: {max:"10", min: "1"}%>
+
+          </div>  
+          <div class = "form-group">
+            <%= f.label :length, class: "sr-only" %>
+            <%= f.number_field :length, placeholder: "How many hours will it take?", html: {max:"10", min: "1"}%>
+
+          </div>    
+          <div class="form-group">
+            <div id="datetimepicker1" class="input-append date">
+              <%= f.label :duetime, class: "sr-only" %>
+
+              <%= f.text_field :duetime, class: "input-block-level", 'data-format'=> "MM/dd/yyyy HH:mm:ss PP", placeholder: "Due time"%>
+              <span class="add-on">
+                <i style = "height: 50px" data-time-icon="icon-time" data-date-icon="icon-calendar">
+                </i>
+              </span>
+            </div>
+          </div>
+          <script type="text/javascript">
+            $(function() {
+              $('#datetimepicker1').datetimepicker({
+                language: 'en',
+                pick12HourFormat: true,
+                
+
+              });
+            });
+          </script>
+          <div class = "form-group">
+            <%= f.label :completed, class: "sr-only" %>
+            <%= f.hidden_field :completed, value: false %>
+
+          </div>
+          <div class = "form-group">
+            <%= f.label :id, class: "sr-only" %>
+            <%= f.hidden_field :id, value: current_user.id %>
+
+          </div>      
+          
+              <%= f.submit "Add Task", :onclick => "", class: "btn btn-primary" %>
+        <% end %>
+        <% end %>                 
+                </ul>
+
+          </div>
+
+
+        </div>  
+        </div>
         </div>
         <div class="panel panel-default">
         <div class = "accordionHead" id = "accordion3">
